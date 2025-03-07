@@ -1,0 +1,838 @@
+@font-face {
+    font-family: 'RunicFont';
+    src: url('https://fonts.cdnfonts.com/css/norse') format('woff2');
+}
+/* Created by me - Custom font import for runic style */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+    overflow: hidden;
+    color: #f1c40f;
+    background-color: #000;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+/* Created by me - Basic reset and body styling */
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+/* Created by me - Simple background overlay with gradient */
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 1s ease, visibility 0s 1s;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-circle {
+    width: 80px;
+    height: 80px;
+    border: 4px solid #f1c40f;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #f1c40f;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+/* AI Prompt: "Create CSS for a medieval-themed loading screen with spinning circle animation and pulsing text effect" */
+
+.title-text {
+    position: fixed;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.title-text.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.title-text h1 {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 48px;
+    color: #f1c40f;
+    text-shadow: 0 0 10px rgba(241, 196, 15, 0.7);
+    letter-spacing: 3px;
+}
+/* Created by me - Title text styling and animation */
+
+.instructions {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.instructions.show {
+    opacity: 1;
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+.instructions p {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: #f1c40f;
+    text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
+    letter-spacing: 1px;
+}
+/* Created by me - Instruction text with floating animation */
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#backgroundVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Created by me - Video container styling */
+
+.flash-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 0s 1s;
+}
+
+.flash-layer.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease, visibility 0s;
+}
+
+.flash-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Created by me - Flash effect layer styling */
+
+.sword-container {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 100px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    opacity: 0;
+}
+
+.sword-container.show {
+    opacity: 1;
+    animation: swordInitialEnter 1.5s ease-out forwards;
+}
+
+@keyframes swordInitialEnter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -20%);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -65%);
+    }
+    80% {
+        transform: translate(-50%, -45%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.sword-container.hidden {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+    pointer-events: none;
+}
+/* AI Prompt: "Create CSS for sword container with smooth entrance animation and transitions" */
+
+.css-sword {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    cursor: pointer;
+    transform-origin: center bottom;
+    transition: transform 0.5s ease, filter 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(241, 196, 15, 0.3));
+    transform: rotate(0deg);
+}
+
+.css-sword:hover {
+    filter: brightness(1.3) drop-shadow(0 0 10px rgba(241, 196, 15, 0.7));
+    transform: rotate(0deg) scale(1.05);
+}
+
+.css-sword.up {
+    transform: rotate(180deg);
+    filter: brightness(1.5) drop-shadow(0 0 15px rgba(241, 196, 15, 0.8));
+    animation: gentlePulse 2s infinite ease-in-out;
+}
+/* Created by me - Basic sword styling and hover effects */
+
+.sword-handle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.handle-top {
+    width: 30px;
+    height: 8px;
+    background: linear-gradient(to right, #a67c00, #f1c40f, #a67c00);
+    border-radius: 3px;
+}
+
+.handle-grip {
+    width: 16px;
+    height: 50px;
+    background: linear-gradient(to right, #8b4513, #a0522d, #8b4513);
+    margin: 2px 0;
+    border-radius: 2px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.handle-grip::before, .handle-grip::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #f1c40f;
+    left: 0;
+}
+
+.handle-grip::before {
+    top: 10px;
+}
+
+.handle-grip::after {
+    bottom: 10px;
+}
+
+.handle-bottom {
+    width: 26px;
+    height: 12px;
+    background: linear-gradient(to right, #a67c00, #f1c40f, #a67c00);
+    border-radius: 50%;
+}
+
+.sword-guard {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 15px;
+    background: linear-gradient(to right, #a67c00, #f1c40f, #a67c00);
+    border-radius: 5px;
+}
+/* AI Prompt: "Design detailed CSS for a medieval sword handle and guard with realistic gradients and 3D effects" */
+
+.sword-blade {
+    position: absolute;
+    bottom: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 210px;
+    background: linear-gradient(to right, #a9a9a9, #d3d3d3, #a9a9a9);
+    clip-path: polygon(50% 0%, 100% 20%, 100% 100%, 0 100%, 0 20%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.blade-edge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: #fff;
+    opacity: 0.7;
+}
+
+.blade-shine {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 4px;
+    height: 90%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+    border-radius: 2px;
+}
+
+.blade-runes {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 15px,
+        rgba(241, 196, 15, 0.3) 15px,
+        rgba(241, 196, 15, 0.3) 18px
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.css-sword:hover .blade-runes,
+.css-sword.up .blade-runes {
+    opacity: 1;
+}
+/* AI Prompt: "Create CSS for a realistic sword blade with metallic shine, edge details, and magical rune effects that appear on hover" */
+
+.sword-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(241, 196, 15, 0.4) 0%, rgba(241, 196, 15, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.sword-glow.active {
+    opacity: 1;
+    animation: glowPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+    0% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.8; transform: translateX(-50%) scale(1.2); }
+    100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+}
+/* Created by me - Sword glow effect with pulsing animation */
+
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.particles-container.active .particle {
+    animation: particleFall 2s ease-in-out forwards;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #f1c40f;
+    border-radius: 50%;
+    top: -10px;
+    left: 50%;
+    opacity: 0;
+    box-shadow: 0 0 5px rgba(241, 196, 15, 0.8);
+    animation-delay: var(--delay);
+}
+
+@keyframes particleFall {
+    0% {
+        opacity: 0;
+        transform: translateY(0) translateX(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) translateX(calc(random(100) - 50px));
+    }
+}
+/* AI Prompt: "Design CSS for magical particle effects with random movement patterns and glowing appearance" */
+
+@keyframes gentlePulse {
+    0% {
+        filter: brightness(1.3) drop-shadow(0 0 10px rgba(241, 196, 15, 0.6));
+    }
+    50% {
+        filter: brightness(1.6) drop-shadow(0 0 20px rgba(241, 196, 15, 1));
+    }
+    100% {
+        filter: brightness(1.3) drop-shadow(0 0 10px rgba(241, 196, 15, 0.6));
+    }
+}
+
+/* AI Prompt: "Create a gentle pulsing animation for the sword when it is in the up position" */
+
+.css-sword.spin-up {
+    animation: spinUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.css-sword.spin-down {
+    animation: spinDown 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.sword-container.enter {
+    animation: swordEnter 1.2s ease-out forwards;
+}
+
+@keyframes spinUp {
+    0% {
+        transform: rotate(0deg);
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(2) drop-shadow(0 0 25px rgba(241, 196, 15, 1));
+    }
+    100% {
+        transform: rotate(180deg);
+        filter: brightness(1.5) drop-shadow(0 0 15px rgba(241, 196, 15, 0.8));
+    }
+}
+
+@keyframes spinDown {
+    0% {
+        transform: rotate(180deg);
+        filter: brightness(1.5) drop-shadow(0 0 15px rgba(241, 196, 15, 0.8));
+    }
+    50% {
+        filter: brightness(2) drop-shadow(0 0 25px rgba(241, 196, 15, 1));
+    }
+    100% {
+        transform: rotate(0deg);
+        filter: brightness(1);
+    }
+}
+
+@keyframes swordEnter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -150%);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -40%);
+    }
+    85% {
+        transform: translate(-50%, -55%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+/* AI Prompt: "Create advanced CSS animations for sword spinning up and down with realistic physics and dynamic lighting effects" */
+
+.login-container {
+    position: fixed;
+    top: 50%;
+    left: calc(50% + 150px);
+    transform: translateY(-50%) scale(0.8);
+    z-index: 4;
+    background: rgba(25, 25, 35, 0.9);
+    border-radius: 10px;
+    padding: 30px;
+    width: 350px;
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+    border: 2px solid #f1c40f;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s 0.8s;
+}
+
+.login-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s;
+    animation: formGlow 3s infinite alternate;
+}
+
+@keyframes formGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(241, 196, 15, 0.8);
+    }
+}
+
+.login-container.success {
+    animation: successPulse 0.5s ease-in-out forwards;
+}
+
+@keyframes successPulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.05);
+        box-shadow: 0 0 40px rgba(241, 196, 15, 1);
+    }
+    100% {
+        transform: translateY(-50%) scale(0);
+        box-shadow: 0 0 60px rgba(241, 196, 15, 0);
+    }
+}
+/* Created by me - Login form container styling and animations */
+
+.login-container h2 {
+    text-align: center;
+    font-family: 'MedievalSharp', cursive;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #f1c40f;
+    text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f1c40f;
+    transition: all 0.3s ease;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #f1c40f;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #e67e22;
+}
+/* Created by me - Basic form styling */
+
+.input-focus-effect {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #f1c40f, #e67e22);
+    transition: width 0.3s ease;
+    z-index: 2;
+}
+
+.form-group input:focus ~ .input-focus-effect {
+    width: 100%;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 38px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.eye-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at center, #f1c40f 30%, transparent 30%);
+    border: 2px solid #f1c40f;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.password-toggle.visible .eye-icon {
+    background: none;
+}
+/* AI Prompt: "Create CSS for form input focus effects and a custom eye icon for password visibility */
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #f1c40f, #e67e22);
+    border: none;
+    border-radius: 5px;
+    color: #191919;
+    font-weight: bold;
+    font-family: 'MedievalSharp', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(to right, #e67e22, #f1c40f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:hover:before {
+    left: 100%;
+}
+/* Created by me - Button styling and hover effects */
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.form-options a {
+    color: #f1c40f;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.form-options a:hover {
+    color: #e67e22;
+    text-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+}
+
+/* created by me - Sound control button styling */
+
+.sound-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(25, 25, 35, 0.7);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    border: 1px solid #f1c40f;
+    transition: all 0.3s ease;
+}
+
+.sound-control:hover {
+    transform: scale(1.1);
+    background: rgba(25, 25, 35, 0.9);
+}
+
+.sound-icon {
+    width: 20px;
+    height: 18px;
+    position: relative;
+}
+
+.sound-icon:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #f1c40f;
+    left: 0;
+}
+
+.sound-icon:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 2px solid #f1c40f;
+    border-left: none;
+    border-radius: 0 50% 50% 0;
+    left: 7px;
+    top: 4px;
+}
+
+.sound-control.muted .sound-icon:after {
+    display: none;
+}
+
+.sound-control.muted:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #e74c3c;
+    transform: rotate(45deg);
+}
+
+/* AI Prompt: "Create CSS for a sound control button with a dynamic icon that changes based on the sound state" */
+
+.particles-container .particle:nth-child(1) { left: 10%; animation-delay: 0.1s; --size: 3px; }
+.particles-container .particle:nth-child(2) { left: 20%; animation-delay: 0.5s; --size: 5px; }
+.particles-container .particle:nth-child(3) { left: 30%; animation-delay: 0.2s; --size: 4px; }
+.particles-container .particle:nth-child(4) { left: 40%; animation-delay: 0.7s; --size: 2px; }
+.particles-container .particle:nth-child(5) { left: 50%; animation-delay: 0.3s; --size: 6px; }
+.particles-container .particle:nth-child(6) { left: 60%; animation-delay: 0.8s; --size: 3px; }
+.particles-container .particle:nth-child(7) { left: 70%; animation-delay: 0.4s; --size: 5px; }
+.particles-container .particle:nth-child(8) { left: 80%; animation-delay: 0.9s; --size: 4px; }
+.particles-container .particle:nth-child(9) { left: 90%; animation-delay: 0.2s; --size: 3px; }
+.particles-container .particle:nth-child(10) { left: 15%; animation-delay: 0.6s; --size: 2px; }
+.particles-container .particle:nth-child(11) { left: 25%; animation-delay: 0.3s; --size: 4px; }
+.particles-container .particle:nth-child(12) { left: 35%; animation-delay: 0.7s; --size: 5px; }
+.particles-container .particle:nth-child(13) { left: 45%; animation-delay: 0.1s; --size: 3px; }
+.particles-container .particle:nth-child(14) { left: 55%; animation-delay: 0.5s; --size: 6px; }
+.particles-container .particle:nth-child(15) { left: 65%; animation-delay: 0.2s; --size: 4px; }
+.particles-container .particle:nth-child(16) { left: 75%; animation-delay: 0.8s; --size: 3px; }
+.particles-container .particle:nth-child(17) { left: 85%; animation-delay: 0.4s; --size: 5px; }
+.particles-container .particle:nth-child(18) { left: 95%; animation-delay: 0.1s; --size: 2px; }
+.particles-container .particle:nth-child(19) { left: 5%; animation-delay: 0.6s; --size: 4px; }
+.particles-container .particle:nth-child(20) { left: 48%; animation-delay: 0.3s; --size: 3px; }
+
+@keyframes formEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) translateX(20px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0) scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .title-text h1 {
+        font-size: 32px;
+    }
+    
+    .instructions p {
+        font-size: 16px;
+    }
+    
+    .login-container {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    
+    .login-container.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .sword-container {
+        width: 80px;
+        height: 240px;
+    }
+    
+    .css-sword {
+        height: 240px;
+    }
+    
+    .sword-blade {
+        height: 170px;
+    }
+    
+    .sword-guard {
+        width: 60px;
+    }
+}

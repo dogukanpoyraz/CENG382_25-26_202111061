@@ -143,15 +143,34 @@
         createParticles();
         // AI Prompt: "Create a function to generate random gold particles with varying sizes and delays" */
 
+        let loginAttempts = [];
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            loginAttempts.push({
+                username: username,
+                password: password,
+                timestamp: new Date().toISOString()
+            });
+            
+            console.log('All Login Attempts:', loginAttempts);
+            
+            console.log(' Last Login Information:', {
+                username: username,
+                password: password,
+                time: new Date().toLocaleTimeString()
+            });
             
             alert('Başarıyla giriş yaptınız! Savaşçı, macera seni bekliyor.');
             
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
         });
-        // Created by me - Simple form submission handler
+        // Created by me - Basic login form handling and logging
 
         const sword = document.getElementById('sword');
         const swordContainer = document.querySelector('.sword-container');
@@ -248,6 +267,79 @@
             }
         });
         // AI Prompt: "Write complex JavaScript for sword click animation sequence that plays video, shows login form, and handles state transitions with proper timing" */
+    
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginContainer = document.querySelector('.login-container');
+    
+            let formToggleNotification = document.createElement('div');
+            formToggleNotification.className = 'form-toggle-notification';
+            formToggleNotification.textContent = 'H\'ye basarak Formu açın.';
+            loginContainer.appendChild(formToggleNotification);
+            
+            const clockContainer = document.createElement('div');
+            clockContainer.className = 'clock-container';
+            
+            const clock = document.createElement('div');
+            clock.id = 'clock';
+            clockContainer.appendChild(clock);
+            
+            document.body.appendChild(clockContainer);
+            
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+        // AI Prompt: "Create a clock element that shows the current time and updates every second" */
+
+        let formsVisible = true;
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'h') {
+                const forms = document.querySelectorAll('form');
+                const loginContainer = document.querySelector('.login-container');
+                const formToggleNotification = document.querySelector('.form-toggle-notification');
+                
+                if (formsVisible) {
+                    forms.forEach(form => {
+                        form.classList.add('form-fade-out');
+                    });
+                    
+                    setTimeout(() => {
+                        forms.forEach(form => {
+                            form.style.display = 'none';
+                            form.classList.remove('form-fade-out');
+                        });
+                        
+                        formToggleNotification.classList.add('show');
+                    }, 500);
+                    
+                } else {
+                    formToggleNotification.classList.remove('show');
+                    
+                    forms.forEach(form => {
+                        form.style.display = 'block';
+                        form.classList.add('form-fade-in');
+                    });
+                    
+                    setTimeout(() => {
+                        forms.forEach(form => {
+                            form.classList.remove('form-fade-in');
+                        });
+                    }, 500);
+                }
+                
+                formsVisible = !formsVisible;
+            }
+        });
+        // AI Prompt: "Create a form toggle notification that shows/hides all forms when the 'h' key is pressed" */
     </script>
 </body>
 </html>

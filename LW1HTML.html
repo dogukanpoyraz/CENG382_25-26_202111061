@@ -165,10 +165,18 @@
                 time: new Date().toLocaleTimeString()
             });
             
-            alert('Başarıyla giriş yaptınız! Savaşçı, macera seni bekliyor.');
+            alert('Savaşçı, macera seni bekliyor.');
             
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
+
+            if (username === 'admin' && password === 'admin') {
+                alert('Giriş başarılı! Yönlendiriliyorsunuz...');
+                window.location.href = 'table.html';
+            } else {
+                alert('Hatalı giriş! Lütfen tekrar deneyin.');
+            }
+            //Created by me - I redirected to the table.html page if the username and password are correct.
         });
         // Created by me - Basic login form handling and logging
 

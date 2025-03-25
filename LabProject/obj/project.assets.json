@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PERSONAL\\Github Projects\\CENG 384\\CENG382_25-26_202111061\\LabProject\\LabProject.csproj",
+      "projectUniqueName": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\LabProject.csproj",
       "projectName": "LabProject",
-      "projectPath": "C:\\PERSONAL\\Github Projects\\CENG 384\\CENG382_25-26_202111061\\LabProject\\LabProject.csproj",
+      "projectPath": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\LabProject.csproj",
       "packagesPath": "C:\\Users\\dkpoy\\.nuget\\packages\\",
-      "outputPath": "C:\\PERSONAL\\Github Projects\\CENG 384\\CENG382_25-26_202111061\\LabProject\\obj\\",
+      "outputPath": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

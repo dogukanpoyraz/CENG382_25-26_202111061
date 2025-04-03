@@ -18,7 +18,6 @@ C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debu
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\scopedcss\bundle\LabProject.styles.css
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\scopedcss\projectbundle\LabProject.bundle.scp.css
-C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\sygkliv830-b9sayid5wm.gz
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\hgfenu8nsr-61n19gt1b8.gz
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\0vky38masl-xtxxf3hu2r.gz
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\h8qtutcet8-bqjiyaj88i.gz
@@ -80,8 +79,6 @@ C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debu
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\z6tk9114ht-muycvpuwrr.gz
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\tqf530ebou-87fc7y1x7t.gz
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\gpdizw2ap6-mlv21k5csn.gz
-C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\brn67k8lya-jrwzq7rs02.gz
-C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\2whracil8j-jrwzq7rs02.gz
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\staticwebassets.build.json
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\staticwebassets.development.json
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -96,3 +93,6 @@ C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debu
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\LabProject.pdb
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\LabProject.genruntimeconfig.cache
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\ref\LabProject.dll
+C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\sygkliv830-b9sayid5wm.gz
+C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\brn67k8lya-cbyk2tf871.gz
+C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\2whracil8j-cbyk2tf871.gz

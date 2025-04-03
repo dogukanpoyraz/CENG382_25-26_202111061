@@ -1,6 +1,4 @@
-/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
+/* Created by me - Adjusts brand text wrapping and alignment */
 a.navbar-brand[b-j6dvz5p2xa] {
   white-space: normal;
   text-align: center;
@@ -11,6 +9,7 @@ a[b-j6dvz5p2xa] {
   color: #0077cc;
 }
 
+/* AI Prompt: "Design a modern-looking primary button style using shades of blue and good contrast" */
 .btn-primary[b-j6dvz5p2xa] {
   color: #fff;
   background-color: #1b6ec2;
@@ -30,6 +29,7 @@ a[b-j6dvz5p2xa] {
   border-bottom: 1px solid #e5e5e5;
 }
 
+/* AI Prompt: "Add a soft box-shadow effect for card-like UI elements" */
 .box-shadow[b-j6dvz5p2xa] {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
@@ -45,4 +45,17 @@ button.accept-policy[b-j6dvz5p2xa] {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+}
+
+/* AI Prompt: "Design a centered, floating notification-style popup with light theme and subtle shadow" */
+.update-popup[b-j6dvz5p2xa] {
+  position: absolute;
+  z-index: 999;
+  width: 300px;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 0.5rem;
 }

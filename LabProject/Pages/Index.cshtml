@@ -6,9 +6,15 @@
     ViewData["Title"] = "Class Management";
 }
 
+<!-- AI Prompt: "Build a stylish and responsive Razor Page using Bootstrap 5 to manage class data. 
+   Layout must include a left-aligned form and a right-aligned table. 
+   The form should support add/edit with validation, and the table should list all entries with edit/delete buttons. 
+   Also include a modern popup interface for inline updates and custom styles for better UX." -->
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
+<!-- Created by me - Custom styles for background, card, table, animations -->
 <style>
     body {
         background: linear-gradient(135deg, #f7f9fc 0%, #e2e6f0 100%);
@@ -46,9 +52,11 @@
     .table-hover tbody tr:hover {
         background-color: #f9fafb;
     }
+
     .table td, .table th {
         vertical-align: middle;
     }
+
     .table-bordered td, .table-bordered th {
         border-color: #dee2e6;
     }
@@ -57,6 +65,7 @@
         font-weight: 700;
         letter-spacing: -0.5px;
     }
+
     .text-muted {
         color: #6c757d !important;
     }
@@ -71,6 +80,28 @@
             opacity: 1;
         }
     }
+
+    td.actions-cell {
+        position: relative;
+    }
+
+    .update-popup {
+        position: absolute;
+        top: 2.5rem;
+        right: 0;
+        z-index: 999;
+        width: 300px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        animation: fadeIn 0.3s ease-in-out forwards;
+        opacity: 0;
+    }
+    .update-popup.fade-in {
+        opacity: 1;
+    }
 </style>
 
 <div class="container py-5 fade-in">
@@ -80,6 +111,7 @@
     </div>
 
     <div class="row g-4">
+        <!-- Created by me - Form card for adding and editing class data -->
         <div class="col-md-4">
             <div class="card card-custom p-4">
                 <h4 class="card-title mb-3 text-primary">
@@ -107,6 +139,7 @@
             </div>
         </div>
 
+        <!-- Created by me - Table view to display and manage class data -->
         <div class="col-md-8">
             <div class="card card-custom p-4">
                 <h4 class="card-title mb-3 text-primary">
@@ -124,7 +157,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Model.GetClassList().Count == 0)
+                        @if (Model.DisplayList.Count == 0)
                         {
                             <tr>
                                 <td colspan="5" class="text-center text-muted">No class data available.</td>
@@ -132,29 +165,75 @@
                         }
                         else
                         {
-                            @foreach (var item in Model.GetClassList())
+                            @foreach (var item in Model.DisplayList)
                             {
                                 <tr>
                                     <td>@item.Id</td>
                                     <td>@item.ClassName</td>
                                     <td>@item.StudentCount</td>
                                     <td>@item.Description</td>
-                                    <td class="text-center">
+                                    <td class="text-center actions-cell">
+                                        <!-- Created by me - Edit and delete buttons with tooltip -->
                                         <form method="post" class="d-inline">
                                             <input type="hidden" name="id" value="@item.Id" />
-                                            <button type="submit" asp-page-handler="Edit" class="btn btn-outline-primary btn-sm btn-custom" 
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit this class">
+                                            <button type="submit" asp-page-handler="Edit"
+                                                    class="btn btn-outline-primary btn-sm btn-custom"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Edit this class">
                                                 <i class="bi bi-pencil-square"></i>
                                             </button>
                                         </form>
 
                                         <form method="post" class="d-inline">
                                             <input type="hidden" name="id" value="@item.Id" />
-                                            <button type="submit" asp-page-handler="Delete" class="btn btn-outline-danger btn-sm btn-custom"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Delete this class">
+                                            <button type="submit" asp-page-handler="Delete"
+                                                    class="btn btn-outline-danger btn-sm btn-custom"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Delete this class">
                                                 <i class="bi bi-trash3"></i>
                                             </button>
                                         </form>
+
+                                        @if (Model.ClassInfo != null && Model.ClassInfo.Id == item.Id)
+                                        {
+                                            <!-- AI Prompt: "Show a floating inline update form with Bootstrap styles, validation, and Cancel/Save logic inside the table row" -->
+                                            <div class="update-popup fade-in">
+                                                <h5 class="mb-3 text-primary">
+                                                    <i class="bi bi-pencil"></i> Update Class
+                                                </h5>
+                                                <form method="post">
+                                                    <input type="hidden" asp-for="@Model.ClassInfo.Id" />
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Class Name</label>
+                                                        <input asp-for="@Model.ClassInfo.ClassName" class="form-control" />
+                                                        <span asp-validation-for="@Model.ClassInfo.ClassName" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Student Count</label>
+                                                        <input asp-for="@Model.ClassInfo.StudentCount" class="form-control" />
+                                                        <span asp-validation-for="@Model.ClassInfo.StudentCount" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Description</label>
+                                                        <textarea asp-for="@Model.ClassInfo.Description" class="form-control" rows="3"></textarea>
+                                                        <span asp-validation-for="@Model.ClassInfo.Description" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <button type="submit" class="btn btn-sm btn-success btn-custom"
+                                                                asp-page-handler="Update">
+                                                            <i class="bi bi-check-circle me-1"></i> Save
+                                                        </button>
+                                                        <form method="post">
+                                                            <button type="submit" class="btn btn-sm btn-secondary btn-custom"
+                                                                    asp-page-handler="CancelEdit">
+                                                                <i class="bi bi-arrow-left"></i> Cancel
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        }
                                     </td>
                                 </tr>
                             }

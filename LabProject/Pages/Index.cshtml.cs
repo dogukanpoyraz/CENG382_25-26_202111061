@@ -12,10 +12,46 @@ namespace LabProject.Pages
         public ClassInformationModel ClassInfo { get; set; }
 
         public static List<ClassInformationModel> ClassList { get; set; } = new();
+        public List<ClassInformationTable> FilteredList { get; set; } = new();
 
-        public void OnGet()
+        public int CurrentPage { get; set; }
+        public int PageSize { get; set; } = 10;
+        public int TotalPages { get; set; }
+
+        
+
+
+
+        public void OnGet(string? keyword, int currentPage = 1)
         {
+            CurrentPage = currentPage;
+
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                FilteredList = new List<ClassInformationTable>();
+                return;
+            }
+
+            var filtered = ClassList
+                .Where(c =>
+                    c.ClassName.Contains(keyword, System.StringComparison.OrdinalIgnoreCase) ||
+                    c.Description.Contains(keyword, System.StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            TotalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
+
+            FilteredList = filtered
+                .Skip((CurrentPage - 1) * PageSize)
+                .Take(PageSize)
+                .Select(c => new ClassInformationTable
+                {
+                    Id = c.Id,
+                    ClassName = c.ClassName,
+                    StudentCount = c.StudentCount,
+                    Description = c.Description
+                }).ToList();
         }
+
 
         // AI Prompt: "Write a handler method that adds a new ClassInformationModel to a static list with validation"
         public IActionResult OnPostAdd()
@@ -94,6 +130,27 @@ namespace LabProject.Pages
                 ClassList[i].Id = i + 1;
             }
         }
+
+        public IActionResult OnPostGenerateFakeData()
+        {
+            int currentMaxId = ClassList.Any() ? ClassList.Max(c => c.Id) : 0;
+            Random rand = new();
+
+            for (int i = 1; i <= 100; i++)
+            {
+                ClassList.Add(new ClassInformationModel
+                {
+                    Id = currentMaxId + i,
+                    ClassName = $"Class {currentMaxId + i}",
+                    StudentCount = rand.Next(10, 100),
+                    Description = $"This is a description for Class {currentMaxId + i}."
+                });
+            }
+
+            return RedirectToPage();
+        }
+
+
 
         // Created by me - Returns the list for display in the Razor page
         public List<ClassInformationModel> DisplayList => ClassList;

@@ -20,6 +20,8 @@ namespace LabProject.Models
         public string Description { get; set; }
     }
 
+
+    // Created by me - Simple data structure to represent class information without validation attributes
     public class ClassInformationTable
     {
         public int Id { get; set; }

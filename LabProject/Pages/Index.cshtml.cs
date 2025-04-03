@@ -12,6 +12,9 @@ namespace LabProject.Pages
         public ClassInformationModel ClassInfo { get; set; }
 
         public static List<ClassInformationModel> ClassList { get; set; } = new();
+        
+        // Created by me - Used to store and manage filtered class data along with pagination properties
+        // Supports displaying a specific subset of results based on current page and keyword filtering
         public List<ClassInformationTable> FilteredList { get; set; } = new();
 
         public int CurrentPage { get; set; }
@@ -19,8 +22,10 @@ namespace LabProject.Pages
         public int TotalPages { get; set; }
 
         
-
-
+        // AI Prompt: "Write an OnGet handler in Razor Pages that filters a list of class data by keyword 
+        // (searching both class name and description), paginates the results, 
+        // and prepares a simplified list of results for displaying in a table. 
+        // The method should take an optional search keyword and a current page number as parameters."
 
         public void OnGet(string? keyword, int currentPage = 1)
         {
@@ -131,6 +136,8 @@ namespace LabProject.Pages
             }
         }
 
+
+        // AI Prompt: "Generate a Razor Page handler that creates 100 fake class entries with random data and adds them to a static list."
         public IActionResult OnPostGenerateFakeData()
         {
             int currentMaxId = ClassList.Any() ? ClassList.Max(c => c.Id) : 0;

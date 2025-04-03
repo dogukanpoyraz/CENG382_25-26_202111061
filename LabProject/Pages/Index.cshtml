@@ -110,6 +110,13 @@
         <p class="text-muted">Manage class details easily — add, update, and delete entries.</p>
     </div>
 
+<!-- AI Prompt: "Create a Razor Pages-compatible search and filter UI with pagination. 
+     Include a GET-based form that filters a class list by keyword (name or description), 
+     and display the filtered results in a styled Bootstrap table. 
+     Add pagination controls that preserve the search keyword when navigating between pages." 
+     ! I also made my own changes !-->
+
+
     <form method="get" class="mb-3">
             <div class="input-group">
                 <input type="text" name="keyword" class="form-control" placeholder="Search by name or description..." />
@@ -245,7 +252,7 @@
                                         </form>
 
                                         @if (Model.ClassInfo != null && Model.ClassInfo.Id == item.Id)
-                                        {//FFF
+                                        {
                                             <!-- AI Prompt: "Show a floating inline update form with Bootstrap styles, validation, and Cancel/Save logic inside the table row" -->
                                             <div id="editPopup" class="update-popup fade-in">
                                                 <h5 class="mb-3 text-primary">
@@ -305,6 +312,8 @@
             return new bootstrap.Tooltip(tooltipTriggerEl);
         });
 
+        /* AI Prompt: "Write JavaScript to automatically scroll to a popup element with id 'editPopup' after the page loads,
+         using smooth scrolling and centering it in the viewport." */
         window.addEventListener("DOMContentLoaded", function () {
             const popup = document.getElementById("editPopup");
             if (popup) {

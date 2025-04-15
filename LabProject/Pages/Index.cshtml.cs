@@ -17,22 +17,27 @@ namespace LabProject.Pages
         // Supports displaying a specific subset of results based on current page and keyword filtering
         public List<ClassInformationTable> FilteredList { get; set; } = new();
 
+        public List<ClassInformationModel> PagedDisplayList { get; set; } = new();
+
         public int CurrentPage { get; set; }
         public int PageSize { get; set; } = 10;
         public int TotalPages { get; set; }
 
-        
         // AI Prompt: "Write an OnGet handler in Razor Pages that filters a list of class data by keyword 
         // (searching both class name and description), paginates the results, 
         // and prepares a simplified list of results for displaying in a table. 
         // The method should take an optional search keyword and a current page number as parameters."
-
         public void OnGet(string? keyword, int currentPage = 1)
         {
             CurrentPage = currentPage;
 
             if (string.IsNullOrWhiteSpace(keyword))
             {
+                TotalPages = (int)System.Math.Ceiling(ClassList.Count / (double)PageSize);
+                PagedDisplayList = ClassList
+                    .Skip((CurrentPage - 1) * PageSize)
+                    .Take(PageSize)
+                    .ToList();
                 FilteredList = new List<ClassInformationTable>();
                 return;
             }
@@ -43,7 +48,7 @@ namespace LabProject.Pages
                     c.Description.Contains(keyword, System.StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
-            TotalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
+            TotalPages = (int)System.Math.Ceiling(filtered.Count / (double)PageSize);
 
             FilteredList = filtered
                 .Skip((CurrentPage - 1) * PageSize)
@@ -56,7 +61,6 @@ namespace LabProject.Pages
                     Description = c.Description
                 }).ToList();
         }
-
 
         // AI Prompt: "Write a handler method that adds a new ClassInformationModel to a static list with validation"
         public IActionResult OnPostAdd()
@@ -88,11 +92,29 @@ namespace LabProject.Pages
         }
 
         // AI Prompt: "Pre-fill the form with data for the selected class item for editing"
-        public IActionResult OnPostEdit(int id)
+        public IActionResult OnPostEdit(int id, string? keyword, int currentPage = 1)
         {
-            var item = ClassList.FirstOrDefault(x => x.Id == id);
-            if (item != null)
+            List<ClassInformationModel> filteredList;
+            if (!string.IsNullOrWhiteSpace(keyword))
             {
+                filteredList = ClassList
+                    .Where(c =>
+                        c.ClassName.Contains(keyword, System.StringComparison.OrdinalIgnoreCase) ||
+                        c.Description.Contains(keyword, System.StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+            else
+            {
+                filteredList = ClassList;
+            }
+
+            int itemIndex = filteredList.FindIndex(c => c.Id == id);
+
+            if (itemIndex != -1)
+            {
+                currentPage = (itemIndex / PageSize) + 1;
+
+                var item = filteredList[itemIndex];
                 ClassInfo = new ClassInformationModel
                 {
                     Id = item.Id,
@@ -101,8 +123,12 @@ namespace LabProject.Pages
                     Description = item.Description
                 };
             }
+
+            OnGet(keyword, currentPage);
+
             return Page();
         }
+
 
         // AI Prompt: "Update the edited class information and refresh the static list"
         public IActionResult OnPostUpdate()
@@ -136,12 +162,11 @@ namespace LabProject.Pages
             }
         }
 
-
         // AI Prompt: "Generate a Razor Page handler that creates 100 fake class entries with random data and adds them to a static list."
         public IActionResult OnPostGenerateFakeData()
         {
             int currentMaxId = ClassList.Any() ? ClassList.Max(c => c.Id) : 0;
-            Random rand = new();
+            System.Random rand = new();
 
             for (int i = 1; i <= 100; i++)
             {
@@ -156,8 +181,6 @@ namespace LabProject.Pages
 
             return RedirectToPage();
         }
-
-
 
         // Created by me - Returns the list for display in the Razor page
         public List<ClassInformationModel> DisplayList => ClassList;

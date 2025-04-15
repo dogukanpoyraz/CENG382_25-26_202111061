@@ -4,6 +4,8 @@
 
 @{
     ViewData["Title"] = "Class Management";
+    var keyword = (string)Request.Query["keyword"];
+    bool hasKeyword = !string.IsNullOrWhiteSpace(keyword);
 }
 
 <!-- AI Prompt: "Build a stylish and responsive Razor Page using Bootstrap 5 to manage class data. 
@@ -116,56 +118,6 @@
      Add pagination controls that preserve the search keyword when navigating between pages." 
      ! I also made my own changes !-->
 
-
-    <form method="get" class="mb-3">
-            <div class="input-group">
-                <input type="text" name="keyword" class="form-control" placeholder="Search by name or description..." />
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </div>
-        </form>
-
-        @if (Model.FilteredList != null && Model.FilteredList.Any())
-        {
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Class Name</th>
-                        <th>Student Count</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach (var item in Model.FilteredList)
-                {
-                    <tr>
-                        <td>@item.ClassName</td>
-                        <td>@item.StudentCount</td>
-                        <td>@item.Description</td>
-                        <td>
-                            <form method="post">
-                                <input type="hidden" name="id" value="@item.Id" />
-                                <button type="submit" asp-page-handler="Edit" class="btn btn-sm btn-warning">Edit</button>
-                                <button type="submit" asp-page-handler="Delete" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        }
-        <nav aria-label="Pagination" class="mt-3">
-            <ul class="pagination justify-content-center">
-                @for (int i = 1; i <= Model.TotalPages; i++)
-                {
-                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                        <a class="page-link" href="?keyword=@Request.Query["keyword"]&currentPage=@i">@i</a>
-                    </li>
-                }
-            </ul>
-        </nav>
-
-
     <div class="row g-4">
         <!-- Created by me - Form card for adding and editing class data -->
         <div class="col-md-4">
@@ -195,7 +147,6 @@
             </div>
         </div>
 
-
         <!-- Created by me - Table view to display and manage class data -->
         <div class="col-md-8">
             <div class="card card-custom p-4">
@@ -203,100 +154,173 @@
                     <i class="bi bi-table"></i> Class List
                 </h4>
 
-                <table class="table table-hover table-bordered align-middle">
-                    <thead class="table-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Class Name</th>
-                            <th>Student Count</th>
-                            <th>Description</th>
-                            <th class="text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model.DisplayList.Count == 0)
-                        {
-                            <tr>
-                                <td colspan="5" class="text-center text-muted">No class data available.</td>
-                            </tr>
-                        }
-                        else
-                        {
-                            @foreach (var item in Model.DisplayList)
+                <form method="get" class="mb-3">
+                    <div class="input-group">
+                        <input id="searchBox" type="text" name="keyword" value="@keyword" class="form-control" placeholder="Search by name or description..." />
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </form>
+
+                @if (hasKeyword)
+                {
+                    @if (Model.FilteredList != null && Model.FilteredList.Any())
+                    {
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Class Name</th>
+                                    <th>Student Count</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model.FilteredList)
                             {
                                 <tr>
-                                    <td>@item.Id</td>
                                     <td>@item.ClassName</td>
                                     <td>@item.StudentCount</td>
                                     <td>@item.Description</td>
-                                    <td class="text-center actions-cell">
-                                        <!-- Created by me - Edit and delete buttons with tooltip -->
+                                    <td>
                                         <form method="post" class="d-inline">
                                             <input type="hidden" name="id" value="@item.Id" />
-                                            <button type="submit" asp-page-handler="Edit"
-                                                    class="btn btn-outline-primary btn-sm btn-custom"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Edit this class">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </button>
+                                            <button type="submit" asp-page-handler="Edit" class="btn btn-sm btn-warning">Edit</button>
+                                            <button type="submit" asp-page-handler="Delete" class="btn btn-sm btn-danger">Delete</button>
                                         </form>
-
-                                        <form method="post" class="d-inline">
-                                            <input type="hidden" name="id" value="@item.Id" />
-                                            <button type="submit" asp-page-handler="Delete"
-                                                    class="btn btn-outline-danger btn-sm btn-custom"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Delete this class">
-                                                <i class="bi bi-trash3"></i>
-                                            </button>
-                                        </form>
-
-                                        @if (Model.ClassInfo != null && Model.ClassInfo.Id == item.Id)
-                                        {
-                                            <!-- AI Prompt: "Show a floating inline update form with Bootstrap styles, validation, and Cancel/Save logic inside the table row" -->
-                                            <div id="editPopup" class="update-popup fade-in">
-                                                <h5 class="mb-3 text-primary">
-                                                    <i class="bi bi-pencil"></i> Update Class
-                                                </h5>
-                                                <form method="post">
-                                                    <input type="hidden" asp-for="@Model.ClassInfo.Id" />
-
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Class Name</label>
-                                                        <input asp-for="@Model.ClassInfo.ClassName" class="form-control" />
-                                                        <span asp-validation-for="@Model.ClassInfo.ClassName" class="text-danger"></span>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Student Count</label>
-                                                        <input asp-for="@Model.ClassInfo.StudentCount" class="form-control" />
-                                                        <span asp-validation-for="@Model.ClassInfo.StudentCount" class="text-danger"></span>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Description</label>
-                                                        <textarea asp-for="@Model.ClassInfo.Description" class="form-control" rows="3"></textarea>
-                                                        <span asp-validation-for="@Model.ClassInfo.Description" class="text-danger"></span>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between">
-                                                        <button type="submit" class="btn btn-sm btn-success btn-custom"
-                                                                asp-page-handler="Update">
-                                                            <i class="bi bi-check-circle me-1"></i> Save
-                                                        </button>
-                                                        <form method="post">
-                                                            <button type="submit" class="btn btn-sm btn-secondary btn-custom"
-                                                                    asp-page-handler="CancelEdit">
-                                                                <i class="bi bi-arrow-left"></i> Cancel
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        }
                                     </td>
                                 </tr>
                             }
-                        }
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">No results found for "<strong>@keyword</strong>".</div>
+                    }
+
+                    @if (Model.TotalPages > 1)
+                    {
+                        <nav aria-label="Pagination" class="mt-3">
+                            <ul class="pagination justify-content-center">
+                                @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                        <a class="page-link" href="?keyword=@keyword&currentPage=@i">@i</a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                    }
+                }
+                else
+                {
+                    <table class="table table-hover table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Class Name</th>
+                                <th>Student Count</th>
+                                <th>Description</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.PagedDisplayList.Count == 0)
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">No class data available.</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                @foreach (var item in Model.PagedDisplayList)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.ClassName</td>
+                                        <td>@item.StudentCount</td>
+                                        <td>@item.Description</td>
+                                        <td class="text-center actions-cell">
+                                            <form method="post" class="d-inline">
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button type="submit" asp-page-handler="Edit"
+                                                        class="btn btn-outline-primary btn-sm btn-custom"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Edit this class">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                            </form>
+
+                                            <form method="post" class="d-inline">
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button type="submit" asp-page-handler="Delete"
+                                                        class="btn btn-outline-danger btn-sm btn-custom"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Delete this class">
+                                                    <i class="bi bi-trash3"></i>
+                                                </button>
+                                            </form>
+
+                                            @if (Model.ClassInfo != null && Model.ClassInfo.Id == item.Id)
+                                            {
+                                                <div id="editPopup" class="update-popup fade-in">
+                                                    <h5 class="mb-3 text-primary">
+                                                        <i class="bi bi-pencil"></i> Update Class
+                                                    </h5>
+                                                    <form method="post">
+                                                        <input type="hidden" asp-for="@Model.ClassInfo.Id" />
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Class Name</label>
+                                                            <input asp-for="@Model.ClassInfo.ClassName" class="form-control" />
+                                                            <span asp-validation-for="@Model.ClassInfo.ClassName" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Student Count</label>
+                                                            <input asp-for="@Model.ClassInfo.StudentCount" class="form-control" />
+                                                            <span asp-validation-for="@Model.ClassInfo.StudentCount" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Description</label>
+                                                            <textarea asp-for="@Model.ClassInfo.Description" class="form-control" rows="3"></textarea>
+                                                            <span asp-validation-for="@Model.ClassInfo.Description" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between">
+                                                            <button type="submit" class="btn btn-sm btn-success btn-custom"
+                                                                    asp-page-handler="Update">
+                                                                <i class="bi bi-check-circle me-1"></i> Save
+                                                            </button>
+                                                            <form method="post">
+                                                                <button type="submit" class="btn btn-sm btn-secondary btn-custom"
+                                                                        asp-page-handler="CancelEdit">
+                                                                    <i class="bi bi-arrow-left"></i> Cancel
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                    @if (Model.TotalPages > 1)
+                    {
+                        <nav aria-label="Pagination" class="mt-3">
+                            <ul class="pagination justify-content-center">
+                                @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                        <a class="page-link" href="?currentPage=@i">@i</a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                    }
+                }
             </div>
         </div>
     </div>
@@ -312,14 +336,31 @@
             return new bootstrap.Tooltip(tooltipTriggerEl);
         });
 
-        /* AI Prompt: "Write JavaScript to automatically scroll to a popup element with id 'editPopup' after the page loads,
-         using smooth scrolling and centering it in the viewport." */
         window.addEventListener("DOMContentLoaded", function () {
             const popup = document.getElementById("editPopup");
             if (popup) {
                 popup.scrollIntoView({ behavior: "smooth", block: "center" });
             }
         });
+
+        const searchBox = document.getElementById('searchBox');
+        if (searchBox) {
+            let timer;
+            searchBox.addEventListener('input', function () {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    const v = this.value;
+                    const url = new URL(window.location.href);
+                    if (v.trim() === '') {
+                        url.searchParams.delete('keyword');
+                        url.searchParams.delete('currentPage');
+                    } else {
+                        url.searchParams.set('keyword', v);
+                        url.searchParams.set('currentPage', 1);
+                    }
+                    window.location.href = url.toString();
+                }, 300);
+            });
+        }
     </script>
 }
-

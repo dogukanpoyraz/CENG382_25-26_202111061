@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]Class Management</title>
+    <title>@ViewData["Title"] - Class Management</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -28,11 +28,20 @@
                         </li>*@
                     </ul>
                 </div>
+
+                @* Created by me - User info and logout button *@
+                @if (Context.Session.GetString("username") != null)
+                {
+                    <div class="d-flex align-items-center me-3">
+                        <span class="me-3 fw-bold text-primary">
+                            Welcome, @Context.Session.GetString("username")
+                        </span>
+                        <a class="btn btn-outline-danger btn-sm" asp-page="/Logout">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </div>
+                }
             </div>
-            @* Created by me - Button added *@
-            <form method="post" asp-page="/Index" asp-page-handler="GenerateFakeData" class="d-flex ms-auto">
-                <button type="submit" class="btn btn-primary">Added 100 Data - Test</button>
-            </form>
         </nav>
     </header>
     <div class="container">

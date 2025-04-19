@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yz9MlpRz8eKVIW22hrTlJU3QqQiq+he2Yl7G5ONkixw=",
+  "Hash": "Ngu52FozR0vUBKxhL5P4n3XfalKhaGBwQsdHr+MbAYU=",
   "Source": "LabProject",
   "BasePath": "_content/LabProject",
   "Mode": "Default",
@@ -477,6 +477,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\avu68zfqrh-14xhvm57ld.gz",
+      "SourceId": "LabProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/LabProject",
+      "RelativePath": "data/users#[.{fingerprint=14xhvm57ld}]?.json.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\data\\users.json",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "0h611ixdn6",
+      "Integrity": "BFCzKli+ZRFqWVhWe6J1hQoDzKSDx+LC6ao4j8Xedw0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\data\\users.json"
     },
     {
       "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\b1q13ir7wo-j5mq2jizvt.gz",
@@ -1422,6 +1443,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\data\\users.json",
+      "SourceId": "LabProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\",
+      "BasePath": "_content/LabProject",
+      "RelativePath": "data/users#[.{fingerprint}]?.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "14xhvm57ld",
+      "Integrity": "4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\data\\users.json"
     },
     {
       "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\favicon.ico",
@@ -3022,6 +3064,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-0FC1RbVkLkwKhJ1oi+r2Hw4Tm9av6DyJeo95YVvfA3Y="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.14xhvm57ld.json",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\avu68zfqrh-14xhvm57ld.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005291005291"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "188"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BFCzKli+ZRFqWVhWe6J1hQoDzKSDx+LC6ao4j8Xedw0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 21:34:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "14xhvm57ld"
+        },
+        {
+          "Name": "label",
+          "Value": "data/users.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.14xhvm57ld.json",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\data\\users.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 21:34:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "14xhvm57ld"
+        },
+        {
+          "Name": "label",
+          "Value": "data/users.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.14xhvm57ld.json.gz",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\avu68zfqrh-14xhvm57ld.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "188"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BFCzKli+ZRFqWVhWe6J1hQoDzKSDx+LC6ao4j8Xedw0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 21:34:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "14xhvm57ld"
+        },
+        {
+          "Name": "label",
+          "Value": "data/users.json.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BFCzKli+ZRFqWVhWe6J1hQoDzKSDx+LC6ao4j8Xedw0="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.json",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\avu68zfqrh-14xhvm57ld.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005291005291"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "188"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BFCzKli+ZRFqWVhWe6J1hQoDzKSDx+LC6ao4j8Xedw0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 21:34:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.json",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\data\\users.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "511"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 21:34:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4WgJJha0VpRKj/NNr45Mz8S0hBZ+2ds8v8j4xRmkXc4="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.json.gz",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\avu68zfqrh-14xhvm57ld.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "188"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BFCzKli+ZRFqWVhWe6J1hQoDzKSDx+LC6ao4j8Xedw0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 21:34:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BFCzKli+ZRFqWVhWe6J1hQoDzKSDx+LC6ao4j8Xedw0="
         }
       ]
     },

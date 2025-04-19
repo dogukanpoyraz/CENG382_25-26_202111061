@@ -1,0 +1,100 @@
+@page
+@model LabProject.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!-- AI Promt: "Create a simple login page using ASP.NET Core Razor Pages with Bootstrap 5. 
+Include fields for username and password, and a submit button. Display error messages if login fails." -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    .login-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .login-card h2 {
+        color: #1b6ec2;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #1b6ec2;
+    }
+
+    .login-btn {
+        background-color: #1b6ec2;
+        border-color: #1b6ec2;
+    }
+
+    .login-btn:hover {
+        background-color: #1455a1;
+        border-color: #1455a1;
+    }
+
+    .alert {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+</style>
+
+<div class="login-card">
+    <h2 class="text-center"><i class="bi bi-person-circle"></i> Login</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="Username" class="form-label">Username</label>
+            <input asp-for="Username" class="form-control" placeholder="Enter your username" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger">@Model.ErrorMessage</div>
+        }
+
+        @if (TempData["AuthError"] != null)
+        {
+            <div class="alert alert-warning" id="authError">@TempData["AuthError"]</div>
+        }
+        
+        <button type="submit" class="btn login-btn w-100 mt-3 text-white">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+        </button>
+    </form>
+</div>
+
+
+<!-- AI Promt: "Add a script to hide the error message after 3 seconds."  -->
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        const authError = document.getElementById("authError");
+        if (authError) {
+            setTimeout(() => {
+                authError.style.display = "none";
+            }, 3000);
+        }
+    });
+</script>
+

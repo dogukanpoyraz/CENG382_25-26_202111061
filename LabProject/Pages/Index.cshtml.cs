@@ -34,6 +34,29 @@ namespace LabProject.Pages
         // The method should take an optional search keyword and a current page number as parameters."
         public void OnGet(string? keyword, int currentPage = 1, string sortColumn = "Id", bool sortAscending = true)
         {
+
+            if (ClassList.Count == 0)
+            {
+                OnPostGenerateFakeData();
+            }
+
+            var cookieUsername = Request.Cookies["username"];
+            var cookieToken = Request.Cookies["token"];
+            var cookieSessionId = Request.Cookies["session_id"];
+
+            var sessionUsername = HttpContext.Session.GetString("username");
+            var sessionToken = HttpContext.Session.GetString("token");
+            var sessionId = HttpContext.Session.GetString("session_id");
+
+            if (string.IsNullOrEmpty(cookieUsername) || string.IsNullOrEmpty(cookieToken) || string.IsNullOrEmpty(cookieSessionId) ||
+                string.IsNullOrEmpty(sessionUsername) || string.IsNullOrEmpty(sessionToken) || string.IsNullOrEmpty(sessionId) ||
+                cookieUsername != sessionUsername || cookieToken != sessionToken || cookieSessionId != sessionId)
+            {
+                TempData["AuthError"] = "You must be logged in to view this page.";
+                Response.Redirect("/Login");
+                return;
+            }
+
             CurrentPage = currentPage;
             SortColumn = sortColumn;
             SortAscending = sortAscending;

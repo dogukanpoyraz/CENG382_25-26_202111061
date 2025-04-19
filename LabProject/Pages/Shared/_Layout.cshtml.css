@@ -79,12 +79,6 @@ th a:hover {
   opacity: 0.7;
 }
 
-.col-id {
-  width: 80px;
-  min-width: 80px;
-  text-align: center;
-}
-
 .col-count {
   width: 120px;
   min-width: 120px;

@@ -221,21 +221,7 @@
                     <table class="table table-hover table-bordered align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th class="col-id">
-                                    <a asp-page="./Index"
-                                    asp-route-currentPage="@Model.CurrentPage"
-                                    asp-route-sortColumn="Id"
-                                    asp-route-sortAscending="@(Model.SortColumn == "Id" ? !Model.SortAscending : true)"
-                                    class="text-decoration-none text-primary fw-bold">
-                                        ID
-                                        @if (Model.SortColumn == "Id")
-                                        {
-                                            <span class="sort-icon">
-                                                @(Model.SortAscending ? "▲" : "▼")
-                                            </span>
-                                        }
-                                    </a>
-                                </th>
+                                @* ID column removed - hidden in Display table *@
                                 <th class="col-name">
                                     <a asp-page="./Index"
                                     asp-route-currentPage="@Model.CurrentPage"
@@ -276,7 +262,7 @@
                             @if (Model.PagedDisplayList.Count == 0)
                             {
                                 <tr>
-                                    <td colspan="5" class="text-center text-muted">No class data available.</td>
+                                    <td colspan="4" class="text-center text-muted">No class data available.</td>
                                 </tr>
                             }
                             else
@@ -284,7 +270,7 @@
                                 @foreach (var item in Model.PagedDisplayList)
                                 {
                                     <tr>
-                                        <td class="col-id">@item.Id</td>
+                                        @* ID cell removed - hidden in Display table *@
                                         <td class="col-name">@item.ClassName</td>
                                         <td class="col-count">@item.StudentCount</td>
                                         <td>@item.Description</td>

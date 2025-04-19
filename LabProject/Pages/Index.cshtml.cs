@@ -11,6 +11,9 @@ namespace LabProject.Pages
         [BindProperty]
         public ClassInformationModel ClassInfo { get; set; }
 
+        public string SortColumn { get; set; }
+        public bool SortAscending { get; set; }
+
         public static List<ClassInformationModel> ClassList { get; set; } = new();
         
         // Created by me - Used to store and manage filtered class data along with pagination properties
@@ -27,40 +30,59 @@ namespace LabProject.Pages
         // (searching both class name and description), paginates the results, 
         // and prepares a simplified list of results for displaying in a table. 
         // The method should take an optional search keyword and a current page number as parameters."
-        public void OnGet(string? keyword, int currentPage = 1)
+        public void OnGet(string? keyword, int currentPage = 1, string sortColumn = "Id", bool sortAscending = true)
         {
             CurrentPage = currentPage;
+            SortColumn = sortColumn;
+            SortAscending = sortAscending;
 
-            if (string.IsNullOrWhiteSpace(keyword))
+            var query = ClassList.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(keyword))
             {
-                TotalPages = (int)System.Math.Ceiling(ClassList.Count / (double)PageSize);
-                PagedDisplayList = ClassList
-                    .Skip((CurrentPage - 1) * PageSize)
-                    .Take(PageSize)
-                    .ToList();
-                FilteredList = new List<ClassInformationTable>();
-                return;
+                query = query.Where(c =>
+                    c.ClassName.Contains(keyword, System.StringComparison.OrdinalIgnoreCase) ||
+                    c.Description.Contains(keyword, System.StringComparison.OrdinalIgnoreCase));
             }
 
-            var filtered = ClassList
-                .Where(c =>
-                    c.ClassName.Contains(keyword, System.StringComparison.OrdinalIgnoreCase) ||
-                    c.Description.Contains(keyword, System.StringComparison.OrdinalIgnoreCase))
-                .ToList();
+            query = (sortColumn, sortAscending) switch
+            {
+                ("Id", true) => query.OrderBy(c => c.Id),
+                ("Id", false) => query.OrderByDescending(c => c.Id),
+                ("StudentCount", true) => query.OrderBy(c => c.StudentCount),
+                ("StudentCount", false) => query.OrderByDescending(c => c.StudentCount),
+                ("ClassName", true) => query.OrderBy(c => ExtractNumber(c.ClassName)),
+                ("ClassName", false) => query.OrderByDescending(c => ExtractNumber(c.ClassName)),
+                _ => query.OrderBy(c => c.Id)
+            };
 
-            TotalPages = (int)System.Math.Ceiling(filtered.Count / (double)PageSize);
+            TotalPages = (int)System.Math.Ceiling(query.Count() / (double)PageSize);
 
-            FilteredList = filtered
+            var pageData = query
                 .Skip((CurrentPage - 1) * PageSize)
                 .Take(PageSize)
-                .Select(c => new ClassInformationTable
-                {
-                    Id = c.Id,
-                    ClassName = c.ClassName,
-                    StudentCount = c.StudentCount,
-                    Description = c.Description
-                }).ToList();
+                .ToList();
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                FilteredList = pageData
+                    .Select(c => new ClassInformationTable
+                    {
+                        Id = c.Id,
+                        ClassName = c.ClassName,
+                        StudentCount = c.StudentCount,
+                        Description = c.Description
+                    }).ToList();
+                PagedDisplayList = new List<ClassInformationModel>();
+            }
+            else
+            {
+                PagedDisplayList = pageData;
+                FilteredList = new List<ClassInformationTable>();
+            }
         }
+
+
 
         // AI Prompt: "Write a handler method that adds a new ClassInformationModel to a static list with validation"
         public IActionResult OnPostAdd()
@@ -181,6 +203,17 @@ namespace LabProject.Pages
 
             return RedirectToPage();
         }
+
+        // Created by me - Extracts trailing number from class name like "Class 42"
+        private int ExtractNumber(string className)
+        {
+            if (string.IsNullOrEmpty(className))
+                return 0;
+
+            var match = System.Text.RegularExpressions.Regex.Match(className, @"\d+");
+            return match.Success ? int.Parse(match.Value) : 0;
+        }
+
 
         // Created by me - Returns the list for display in the Razor page
         public List<ClassInformationModel> DisplayList => ClassList;

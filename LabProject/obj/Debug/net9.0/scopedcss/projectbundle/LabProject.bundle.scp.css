@@ -60,3 +60,38 @@ button.accept-policy[b-j6dvz5p2xa] {
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
   margin-top: 0.5rem;
 }
+
+/* AI Prompt: "Create a modern table header style with alternating row colors and hover effect" */
+th a[b-j6dvz5p2xa] {
+  color: #1b6ec2;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+th a:hover[b-j6dvz5p2xa] {
+  text-decoration: underline;
+}
+
+.sort-icon[b-j6dvz5p2xa] {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.col-id[b-j6dvz5p2xa] {
+  width: 80px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.col-count[b-j6dvz5p2xa] {
+  width: 120px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.col-name[b-j6dvz5p2xa] {
+  min-width: 200px;
+}

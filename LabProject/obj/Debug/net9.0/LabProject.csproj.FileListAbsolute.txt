@@ -94,5 +94,5 @@ C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debu
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\LabProject.genruntimeconfig.cache
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\ref\LabProject.dll
 C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\sygkliv830-b9sayid5wm.gz
-C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\brn67k8lya-cbyk2tf871.gz
-C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\2whracil8j-cbyk2tf871.gz
+C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\brn67k8lya-0ep9urkuhs.gz
+C:\PERSONAL\Github Projects\CENG 382\CENG382_25-26_202111061\LabProject\obj\Debug\net9.0\compressed\2whracil8j-0ep9urkuhs.gz

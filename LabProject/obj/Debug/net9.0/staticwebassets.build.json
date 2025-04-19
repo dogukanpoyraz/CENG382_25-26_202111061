@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8u5ncuRzkluhZA1/dQkmxdWxMSe6MmmubuaPplS0Rg0=",
+  "Hash": "6Rx2MPozMlGN92dPsJ9ppsU1gW++PJPW9Iv12iw/nJc=",
   "Source": "LabProject",
   "BasePath": "_content/LabProject",
   "Mode": "Default",
@@ -143,12 +143,12 @@
       "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-0ep9urkuhs.gz",
+      "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-pcw3v5ul5e.gz",
       "SourceId": "LabProject",
       "SourceType": "Computed",
       "ContentRoot": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/LabProject",
-      "RelativePath": "LabProject#[.{fingerprint=0ep9urkuhs}]!.bundle.scp.css.gz",
+      "RelativePath": "LabProject#[.{fingerprint=pcw3v5ul5e}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -157,8 +157,8 @@
       "RelatedAsset": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\LabProject.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "k2xnyagdxk",
-      "Integrity": "LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=",
+      "Fingerprint": "100v40k4lv",
+      "Integrity": "PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\LabProject.bundle.scp.css"
@@ -521,12 +521,12 @@
       "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-0ep9urkuhs.gz",
+      "Identity": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-pcw3v5ul5e.gz",
       "SourceId": "LabProject",
       "SourceType": "Computed",
       "ContentRoot": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/LabProject",
-      "RelativePath": "LabProject#[.{fingerprint=0ep9urkuhs}]?.styles.css.gz",
+      "RelativePath": "LabProject#[.{fingerprint=pcw3v5ul5e}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -535,8 +535,8 @@
       "RelatedAsset": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\LabProject.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "k2xnyagdxk",
-      "Integrity": "LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=",
+      "Fingerprint": "100v40k4lv",
+      "Integrity": "PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\LabProject.styles.css"
@@ -1375,8 +1375,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "0ep9urkuhs",
-      "Integrity": "yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=",
+      "Fingerprint": "pcw3v5ul5e",
+      "Integrity": "iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\LabProject.styles.css"
@@ -1396,8 +1396,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "0ep9urkuhs",
-      "Integrity": "yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=",
+      "Fingerprint": "pcw3v5ul5e",
+      "Integrity": "iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\LabProject.bundle.scp.css"
@@ -3622,13 +3622,13 @@
       ]
     },
     {
-      "Route": "LabProject.0ep9urkuhs.bundle.scp.css",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-0ep9urkuhs.gz",
+      "Route": "LabProject.bundle.scp.css",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-pcw3v5ul5e.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001144164760"
+          "Quality": "0.001157407407"
         }
       ],
       "ResponseHeaders": [
@@ -3638,19 +3638,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "873"
+          "Value": "863"
         },
         {
           "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -3666,26 +3666,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
+          "Value": "W/\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "0ep9urkuhs"
-        },
-        {
-          "Name": "label",
-          "Value": "LabProject.bundle.scp.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
         }
       ]
     },
     {
-      "Route": "LabProject.0ep9urkuhs.bundle.scp.css",
+      "Route": "LabProject.bundle.scp.css",
       "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\LabProject.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3695,7 +3687,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2172"
+          "Value": "2083"
         },
         {
           "Name": "Content-Type",
@@ -3703,11 +3695,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
+          "Value": "\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
+        }
+      ]
+    },
+    {
+      "Route": "LabProject.bundle.scp.css.gz",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-pcw3v5ul5e.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI="
+        }
+      ]
+    },
+    {
+      "Route": "LabProject.pcw3v5ul5e.bundle.scp.css",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-pcw3v5ul5e.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001157407407"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "863"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pcw3v5ul5e"
+        },
+        {
+          "Name": "label",
+          "Value": "LabProject.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
+        }
+      ]
+    },
+    {
+      "Route": "LabProject.pcw3v5ul5e.bundle.scp.css",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\LabProject.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2083"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3717,7 +3854,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0ep9urkuhs"
+          "Value": "pcw3v5ul5e"
         },
         {
           "Name": "label",
@@ -3725,13 +3862,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
         }
       ]
     },
     {
-      "Route": "LabProject.0ep9urkuhs.bundle.scp.css.gz",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-0ep9urkuhs.gz",
+      "Route": "LabProject.pcw3v5ul5e.bundle.scp.css.gz",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-pcw3v5ul5e.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3740,7 +3877,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "873"
+          "Value": "863"
         },
         {
           "Name": "Content-Type",
@@ -3748,11 +3885,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3770,7 +3907,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0ep9urkuhs"
+          "Value": "pcw3v5ul5e"
         },
         {
           "Name": "label",
@@ -3778,18 +3915,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4="
+          "Value": "sha256-PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI="
         }
       ]
     },
     {
-      "Route": "LabProject.0ep9urkuhs.styles.css",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-0ep9urkuhs.gz",
+      "Route": "LabProject.pcw3v5ul5e.styles.css",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-pcw3v5ul5e.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001144164760"
+          "Quality": "0.001157407407"
         }
       ],
       "ResponseHeaders": [
@@ -3799,15 +3936,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "873"
+          "Value": "863"
         },
         {
           "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3827,13 +3964,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
+          "Value": "W/\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0ep9urkuhs"
+          "Value": "pcw3v5ul5e"
         },
         {
           "Name": "label",
@@ -3841,12 +3978,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
         }
       ]
     },
     {
-      "Route": "LabProject.0ep9urkuhs.styles.css",
+      "Route": "LabProject.pcw3v5ul5e.styles.css",
       "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\bundle\\LabProject.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3856,7 +3993,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2172"
+          "Value": "2083"
         },
         {
           "Name": "Content-Type",
@@ -3864,11 +4001,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
+          "Value": "\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3878,7 +4015,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0ep9urkuhs"
+          "Value": "pcw3v5ul5e"
         },
         {
           "Name": "label",
@@ -3886,13 +4023,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
         }
       ]
     },
     {
-      "Route": "LabProject.0ep9urkuhs.styles.css.gz",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-0ep9urkuhs.gz",
+      "Route": "LabProject.pcw3v5ul5e.styles.css.gz",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-pcw3v5ul5e.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3901,7 +4038,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "873"
+          "Value": "863"
         },
         {
           "Name": "Content-Type",
@@ -3909,11 +4046,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3931,7 +4068,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0ep9urkuhs"
+          "Value": "pcw3v5ul5e"
         },
         {
           "Name": "label",
@@ -3939,155 +4076,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4="
-        }
-      ]
-    },
-    {
-      "Route": "LabProject.bundle.scp.css",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-0ep9urkuhs.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001144164760"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "873"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
-        }
-      ]
-    },
-    {
-      "Route": "LabProject.bundle.scp.css",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\LabProject.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2172"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
-        }
-      ]
-    },
-    {
-      "Route": "LabProject.bundle.scp.css.gz",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\2whracil8j-0ep9urkuhs.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "873"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4="
+          "Value": "sha256-PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI="
         }
       ]
     },
     {
       "Route": "LabProject.styles.css",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-0ep9urkuhs.gz",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-pcw3v5ul5e.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001144164760"
+          "Quality": "0.001157407407"
         }
       ],
       "ResponseHeaders": [
@@ -4097,15 +4097,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "873"
+          "Value": "863"
         },
         {
           "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4125,13 +4125,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
+          "Value": "W/\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
         }
       ]
     },
@@ -4146,7 +4146,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2172"
+          "Value": "2083"
         },
         {
           "Name": "Content-Type",
@@ -4154,11 +4154,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U=\""
+          "Value": "\"iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4168,13 +4168,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-yNKwzJtJ+4Rpgdx4Vcztd6t/dIOgvAJPGFZUJya09/U="
+          "Value": "sha256-iZkO2JMFdSB9wY64VhcntB2q/dn9k9GAuVGiqbkHkns="
         }
       ]
     },
     {
       "Route": "LabProject.styles.css.gz",
-      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-0ep9urkuhs.gz",
+      "AssetFile": "C:\\PERSONAL\\Github Projects\\CENG 382\\CENG382_25-26_202111061\\LabProject\\obj\\Debug\\net9.0\\compressed\\brn67k8lya-pcw3v5ul5e.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4183,7 +4183,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "873"
+          "Value": "863"
         },
         {
           "Name": "Content-Type",
@@ -4191,11 +4191,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4=\""
+          "Value": "\"PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 19 Apr 2025 15:04:31 GMT"
+          "Value": "Sat, 19 Apr 2025 16:39:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4213,7 +4213,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-LBEeX+YiFgQ2SFsfvXhcIdUB2oWJd//yqgPNI7Ziza4="
+          "Value": "sha256-PyqsWLTMDQ7f/BKUNxF6ogxK5z1krWoiES41/Grr6nI="
         }
       ]
     },

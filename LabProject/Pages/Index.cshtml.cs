@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using LabProject.Models;
 using System.Collections.Generic;
 using System.Linq;
+using LabProject.Helpers; // Assuming this is where the Utils class is located
+using System.Text;
 
 namespace LabProject.Pages
 {
@@ -10,7 +12,7 @@ namespace LabProject.Pages
     {
         [BindProperty]
         public ClassInformationModel ClassInfo { get; set; }
-
+        public List<string> SelectedColumns { get; set; }
         public string SortColumn { get; set; }
         public bool SortAscending { get; set; }
 
@@ -212,6 +214,49 @@ namespace LabProject.Pages
 
             var match = System.Text.RegularExpressions.Regex.Match(className, @"\d+");
             return match.Success ? int.Parse(match.Value) : 0;
+        }
+
+        /*AI Prompt: "Create a Razor Page handler that exports the filtered or full list of class data to JSON format.
+            The method should take an export type parameter to determine whether to export the filtered list or the full list.
+            The exported JSON file should be downloadable with a timestamp in the filename."
+            The method should also handle the case where no data is available for export gracefully."
+            The export type can be "filtered" or "full". */
+
+        public IActionResult OnPostExportJson(string exportType, List<string> selectedColumns, List<int> selectedIds)
+        {
+            List<ClassInformationModel> dataToExport;
+
+            if (exportType == "all")
+            {
+                dataToExport = ClassList;
+                selectedColumns = null;
+            }
+
+            else
+            {
+                var filtered = FilteredList.Any()
+                    ? FilteredList.Select(c => new ClassInformationModel
+                    {
+                        Id = c.Id,
+                        ClassName = c.ClassName,
+                        StudentCount = c.StudentCount,
+                        Description = c.Description
+                    }).ToList()
+                    : ClassList;
+
+                dataToExport = selectedIds != null && selectedIds.Any()
+                    ? filtered.Where(x => selectedIds.Contains(x.Id)).ToList()
+                    : filtered;
+            }
+
+            var json = exportType == "all"
+                ? Utils.Instance.ExportToJson(dataToExport)
+                : Utils.Instance.ExportToJson(dataToExport, selectedColumns);
+
+            var bytes = Encoding.UTF8.GetBytes(json);
+            var fileName = $"export_{exportType}_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+
+            return File(bytes, "application/json", fileName);
         }
 
 

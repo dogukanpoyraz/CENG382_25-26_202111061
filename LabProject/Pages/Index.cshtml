@@ -153,6 +153,39 @@
                 <h4 class="card-title mb-3 text-primary">
                     <i class="bi bi-table"></i> Class List
                 </h4>
+                
+                <!-- AI Prompt: "Add a JSON export feature to the Razor Page. Include checkboxes for selecting columns to export, and buttons for exporting all or filtered data." -->
+                <form method="post" asp-page-handler="ExportJson" class="mb-2">
+                    <div class="mb-3">
+                        <label class="form-label">Select Columns to Export:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input export-checkbox" type="checkbox" name="selectedColumns" value="ClassName" id="chkClassName">
+                            <label class="form-check-label" for="chkClassName">Class Name</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input export-checkbox" type="checkbox" name="selectedColumns" value="StudentCount" id="chkStudentCount">
+                            <label class="form-check-label" for="chkStudentCount">Student Count</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input export-checkbox" type="checkbox" name="selectedColumns" value="Description" id="chkDescription">
+                            <label class="form-check-label" for="chkDescription">Description</label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" name="exportType" value="all" class="btn btn-outline-primary">
+                            <i class="bi bi-download"></i> Export All to JSON
+                        </button>
+                        <button type="submit" name="exportType" value="filtered" class="btn btn-outline-success">
+                            <i class="bi bi-filter-square"></i> Export Filtered to JSON
+                        </button>
+                        <button type="button" class="btn btn-outline-danger" id="clearSelectionBtn">
+                            <i class="bi bi-x-circle"></i> Clear Table Selection
+                        </button>
+                        <span id="selectionCount" class="badge bg-primary align-self-center ms-2" style="display: none;"></span>
+                    </div>
+                    <div id="selectedRowInputs"></div>
+                </form>
 
                 <form method="get" class="mb-3">
                     <div class="input-group">
@@ -269,7 +302,7 @@
                             {
                                 @foreach (var item in Model.PagedDisplayList)
                                 {
-                                    <tr>
+                                    <tr class="selectable-row" data-id="@item.Id">
                                         @* ID cell removed - hidden in Display table *@
                                         <td class="col-name">@item.ClassName</td>
                                         <td class="col-count">@item.StudentCount</td>
@@ -373,6 +406,8 @@
             return new bootstrap.Tooltip(tooltipTriggerEl);
         });
 
+        /* AI Prompt: "Write JavaScript to automatically scroll to a popup element with id 'editPopup' after the page loads,
+          using smooth scrolling and centering it in the viewport." */
         window.addEventListener("DOMContentLoaded", function () {
             const popup = document.getElementById("editPopup");
             if (popup) {
@@ -400,4 +435,107 @@
             });
         }
     </script>
+
+    
+    <script>
+
+        // AI Prompt: "Implement a JavaScript function to handle row selection in a Bootstrap table.
+        const selectedIds = new Set(JSON.parse(localStorage.getItem("selectedRows") || "[]"));
+
+        document.querySelectorAll(".selectable-row").forEach(row => {
+            const id = row.dataset.id;
+
+            if (selectedIds.has(id)) {
+                row.classList.add("table-active");
+            }
+
+            row.addEventListener("click", function () {
+                if (selectedIds.has(id)) {
+                    selectedIds.delete(id);
+                    this.classList.remove("table-active");
+                } else {
+                    selectedIds.add(id);
+                    this.classList.add("table-active");
+                }
+
+                localStorage.setItem("selectedRows", JSON.stringify([...selectedIds]));
+                updateHiddenInputs();
+            });
+        });
+
+        /* AI Prompt: "Create a JavaScript function to update hidden input fields based on selected rows in a Bootstrap table.
+            This function should be called whenever a row is selected or deselected." */
+        function updateHiddenInputs() {
+            const container = document.getElementById("selectedRowInputs");
+            const badge = document.getElementById("selectionCount");
+
+            if (!container) return;
+
+            container.innerHTML = "";
+
+            selectedIds.forEach(id => {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "selectedIds";
+                input.value = id;
+                container.appendChild(input);
+            });
+
+            if (badge) {
+                const count = selectedIds.size;
+
+                if (count > 0) {
+                    badge.innerText = `${count} row${count > 1 ? 's' : ''} selected`;
+                    badge.style.display = "inline-block";
+                } else {
+                    badge.style.display = "none";
+                }
+            }
+        }
+
+
+        window.addEventListener("DOMContentLoaded", updateHiddenInputs);
+    </script>
+
+    <script>
+        // AI Prompt: "Add a JavaScript function to clear all selected rows in the Bootstrap table.
+        // This should remove the 'table-active' class from all selected rows and clear the local storage."
+        document.getElementById("clearSelectionBtn").addEventListener("click", () => {
+            selectedIds.clear(); // <--- işte bu satırı ekliyoruz
+            localStorage.removeItem("selectedRows");
+
+            document.querySelectorAll(".selectable-row").forEach(row => {
+                row.classList.remove("table-active");
+            });
+
+            updateHiddenInputs();
+        });
+
+    </script>
+
+    <script>
+    /* AI Prompt: "Add a JavaScript function to prevent row selection when clicking on buttons inside the row.
+        This should ensure that clicking on buttons does not trigger the row selection event.*/
+    document.querySelectorAll(".actions-cell button").forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+    });
+
+    document.querySelectorAll(".actions-cell i").forEach(icon => {
+        icon.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+    });
+
+    /* AI Prompt: "Add a JavaScript function to prevent the popup from closing when clicking inside it.
+        This should ensure that the popup remains open when interacting with its content." */
+    document.querySelectorAll("#editPopup, #editPopup *").forEach(el => {
+        el.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+    });
+
+</script>
+
 }

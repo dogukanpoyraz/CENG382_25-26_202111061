@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using LabProject.Helpers; // Assuming this is where the Utils class is located
 using System.Text;
+using LabProject.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace LabProject.Pages
 {
@@ -16,8 +18,6 @@ namespace LabProject.Pages
         public string SortColumn { get; set; }
         public bool SortAscending { get; set; }
 
-        public static List<ClassInformationModel> ClassList { get; set; } = new();
-        
         // Created by me - Used to store and manage filtered class data along with pagination properties
         // Supports displaying a specific subset of results based on current page and keyword filtering
         public List<ClassInformationTable> FilteredList { get; set; } = new();
@@ -28,17 +28,21 @@ namespace LabProject.Pages
         public int PageSize { get; set; } = 10;
         public int TotalPages { get; set; }
 
+        private readonly SchoolDbContext _context;
+
+        public IndexModel(SchoolDbContext context)
+        {
+            _context = context;
+        }
+
+
         // AI Prompt: "Write an OnGet handler in Razor Pages that filters a list of class data by keyword 
         // (searching both class name and description), paginates the results, 
         // and prepares a simplified list of results for displaying in a table. 
         // The method should take an optional search keyword and a current page number as parameters."
-        public void OnGet(string? keyword, int currentPage = 1, string sortColumn = "Id", bool sortAscending = true)
+        public async Task OnGetAsync(string? keyword, int currentPage = 1, string sortColumn = "Id", bool sortAscending = true)
         {
-
-            if (ClassList.Count == 0)
-            {
-                OnPostGenerateFakeData();
-            }
+            TrySeedFakeData();
 
             var cookieUsername = Request.Cookies["username"];
             var cookieToken = Request.Cookies["token"];
@@ -61,32 +65,36 @@ namespace LabProject.Pages
             SortColumn = sortColumn;
             SortAscending = sortAscending;
 
-            var query = ClassList.AsQueryable();
+            var query = _context.Classes
+            .Where(c => c.IsActive)
+            .AsQueryable();
+
 
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 query = query.Where(c =>
-                    c.ClassName.Contains(keyword, System.StringComparison.OrdinalIgnoreCase) ||
-                    c.Description.Contains(keyword, System.StringComparison.OrdinalIgnoreCase));
+                    c.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+                    c.Description.Contains(keyword, StringComparison.OrdinalIgnoreCase));
             }
 
             query = (sortColumn, sortAscending) switch
             {
                 ("Id", true) => query.OrderBy(c => c.Id),
                 ("Id", false) => query.OrderByDescending(c => c.Id),
-                ("StudentCount", true) => query.OrderBy(c => c.StudentCount),
-                ("StudentCount", false) => query.OrderByDescending(c => c.StudentCount),
-                ("ClassName", true) => query.OrderBy(c => ExtractNumber(c.ClassName)),
-                ("ClassName", false) => query.OrderByDescending(c => ExtractNumber(c.ClassName)),
+                ("StudentCount", true) => query.OrderBy(c => c.PersonCount),
+                ("StudentCount", false) => query.OrderByDescending(c => c.PersonCount),
+                ("ClassName", true) => query.OrderBy(c => ExtractNumber(c.Name)),
+                ("ClassName", false) => query.OrderByDescending(c => ExtractNumber(c.Name)),
                 _ => query.OrderBy(c => c.Id)
             };
 
-            TotalPages = (int)System.Math.Ceiling(query.Count() / (double)PageSize);
+            var totalItemCount = await query.CountAsync();
+            TotalPages = (int)Math.Ceiling(totalItemCount / (double)PageSize);
 
-            var pageData = query
+            var pageData = await query
                 .Skip((CurrentPage - 1) * PageSize)
                 .Take(PageSize)
-                .ToList();
+                .ToListAsync();
 
             if (!string.IsNullOrWhiteSpace(keyword))
             {
@@ -94,20 +102,25 @@ namespace LabProject.Pages
                     .Select(c => new ClassInformationTable
                     {
                         Id = c.Id,
-                        ClassName = c.ClassName,
-                        StudentCount = c.StudentCount,
+                        ClassName = c.Name,
+                        StudentCount = c.PersonCount,
                         Description = c.Description
                     }).ToList();
                 PagedDisplayList = new List<ClassInformationModel>();
             }
             else
             {
-                PagedDisplayList = pageData;
+                PagedDisplayList = pageData.Select(c => new ClassInformationModel
+                {
+                    Id = c.Id,
+                    ClassName = c.Name,
+                    StudentCount = c.PersonCount,
+                    Description = c.Description
+                }).ToList();
+
                 FilteredList = new List<ClassInformationTable>();
             }
         }
-
-
 
         // AI Prompt: "Write a handler method that adds a new ClassInformationModel to a static list with validation"
         public IActionResult OnPostAdd()
@@ -115,46 +128,51 @@ namespace LabProject.Pages
             if (!ModelState.IsValid)
                 return Page();
 
-            ClassList.Add(new ClassInformationModel
+            var newClass = new Class
             {
-                ClassName = ClassInfo.ClassName,
-                StudentCount = ClassInfo.StudentCount,
-                Description = ClassInfo.Description
-            });
-            ReindexIds();
+                Name = ClassInfo.ClassName,
+                PersonCount = ClassInfo.StudentCount,
+                Description = ClassInfo.Description,
+                IsActive = true
+            };
+
+            _context.Classes.Add(newClass);
+            _context.SaveChanges();
 
             return RedirectToPage();
         }
+
 
         // Created by me - Removes an item by ID and updates remaining IDs
         public IActionResult OnPostDelete(int id)
         {
-            var item = ClassList.FirstOrDefault(x => x.Id == id);
+            var item = _context.Classes.FirstOrDefault(x => x.Id == id);
             if (item != null)
             {
-                ClassList.Remove(item);
-                ReindexIds();
+                item.IsActive = false;
+                _context.SaveChanges();
             }
+
             return RedirectToPage();
         }
 
+
+
         // AI Prompt: "Pre-fill the form with data for the selected class item for editing"
-        public IActionResult OnPostEdit(int id, string? keyword, int currentPage = 1)
+        public async Task<IActionResult> OnPostEditAsync(int id, string? keyword, int currentPage = 1)
         {
-            List<ClassInformationModel> filteredList;
+            var query = _context.Classes
+            .Where(c => c.IsActive)
+            .AsQueryable();
+
             if (!string.IsNullOrWhiteSpace(keyword))
             {
-                filteredList = ClassList
-                    .Where(c =>
-                        c.ClassName.Contains(keyword, System.StringComparison.OrdinalIgnoreCase) ||
-                        c.Description.Contains(keyword, System.StringComparison.OrdinalIgnoreCase))
-                    .ToList();
-            }
-            else
-            {
-                filteredList = ClassList;
+                query = query.Where(c =>
+                    c.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+                    c.Description.Contains(keyword, StringComparison.OrdinalIgnoreCase));
             }
 
+            var filteredList = await query.ToListAsync();
             int itemIndex = filteredList.FindIndex(c => c.Id == id);
 
             if (itemIndex != -1)
@@ -165,16 +183,17 @@ namespace LabProject.Pages
                 ClassInfo = new ClassInformationModel
                 {
                     Id = item.Id,
-                    ClassName = item.ClassName,
-                    StudentCount = item.StudentCount,
+                    ClassName = item.Name,
+                    StudentCount = item.PersonCount,
                     Description = item.Description
                 };
             }
 
-            OnGet(keyword, currentPage);
+            await OnGetAsync(keyword, currentPage);
 
             return Page();
         }
+
 
 
         // AI Prompt: "Update the edited class information and refresh the static list"
@@ -183,15 +202,19 @@ namespace LabProject.Pages
             if (!ModelState.IsValid)
                 return Page();
 
-            var item = ClassList.FirstOrDefault(x => x.Id == ClassInfo.Id);
+            var item = _context.Classes.FirstOrDefault(x => x.Id == ClassInfo.Id);
             if (item != null)
             {
-                item.ClassName = ClassInfo.ClassName;
-                item.StudentCount = ClassInfo.StudentCount;
+                item.Name = ClassInfo.ClassName;
+                item.PersonCount = ClassInfo.StudentCount;
                 item.Description = ClassInfo.Description;
+
+                _context.SaveChanges();
             }
+
             return RedirectToPage();
         }
+
 
         // Created by me - Cancels the edit process and reloads the page
         public IActionResult OnPostCancelEdit()
@@ -199,35 +222,33 @@ namespace LabProject.Pages
             ClassInfo = null;
             return RedirectToPage();
         }
-        
-        // AI Prompt: "Recalculate and assign new IDs sequentially starting from 1"
-        private void ReindexIds()
-        {
-            for (int i = 0; i < ClassList.Count; i++)
-            {
-                ClassList[i].Id = i + 1;
-            }
-        }
 
         // AI Prompt: "Generate a Razor Page handler that creates 100 fake class entries with random data and adds them to a static list."
         public IActionResult OnPostGenerateFakeData()
         {
-            int currentMaxId = ClassList.Any() ? ClassList.Max(c => c.Id) : 0;
-            System.Random rand = new();
+            if (_context.Classes.Any())
+            {
+                return RedirectToPage();
+            }
+
+            var rand = new Random();
 
             for (int i = 1; i <= 100; i++)
             {
-                ClassList.Add(new ClassInformationModel
+                _context.Classes.Add(new Class
                 {
-                    Id = currentMaxId + i,
-                    ClassName = $"Class {currentMaxId + i}",
-                    StudentCount = rand.Next(10, 100),
-                    Description = $"This is a description for Class {currentMaxId + i}."
+                    Name = $"Class {i}",
+                    PersonCount = rand.Next(10, 100),
+                    Description = $"This is a description for Class {i}.",
+                    IsActive = true
                 });
             }
 
+            _context.SaveChanges();
+
             return RedirectToPage();
         }
+
 
         // Created by me - Extracts trailing number from class name like "Class 42"
         private int ExtractNumber(string className)
@@ -245,31 +266,45 @@ namespace LabProject.Pages
             The method should also handle the case where no data is available for export gracefully."
             The export type can be "filtered" or "full". */
 
-        public IActionResult OnPostExportJson(string exportType, List<string> selectedColumns, List<int> selectedIds)
+        public async Task<IActionResult> OnPostExportJsonAsync(string exportType, List<string> selectedColumns, List<int> selectedIds)
         {
             List<ClassInformationModel> dataToExport;
 
             if (exportType == "all")
             {
-                dataToExport = ClassList;
+                var allEntities = await _context.Classes
+                .Where(c => c.IsActive) 
+                .ToListAsync();
+
+
+                dataToExport = allEntities.Select(c => new ClassInformationModel
+                {
+                    Id = c.Id,
+                    ClassName = c.Name,
+                    StudentCount = c.PersonCount,
+                    Description = c.Description
+                }).ToList();
+
                 selectedColumns = null;
             }
-
             else
             {
-                var filtered = FilteredList.Any()
-                    ? FilteredList.Select(c => new ClassInformationModel
-                    {
-                        Id = c.Id,
-                        ClassName = c.ClassName,
-                        StudentCount = c.StudentCount,
-                        Description = c.Description
-                    }).ToList()
-                    : ClassList;
+                var filteredQuery = _context.Classes.AsQueryable();
 
-                dataToExport = selectedIds != null && selectedIds.Any()
-                    ? filtered.Where(x => selectedIds.Contains(x.Id)).ToList()
-                    : filtered;
+                if (selectedIds != null && selectedIds.Any())
+                {
+                    filteredQuery = filteredQuery.Where(c => selectedIds.Contains(c.Id));
+                }
+
+                var filteredEntities = await filteredQuery.ToListAsync();
+
+                dataToExport = filteredEntities.Select(c => new ClassInformationModel
+                {
+                    Id = c.Id,
+                    ClassName = c.Name,
+                    StudentCount = c.PersonCount,
+                    Description = c.Description
+                }).ToList();
             }
 
             var json = exportType == "all"
@@ -282,8 +317,23 @@ namespace LabProject.Pages
             return File(bytes, "application/json", fileName);
         }
 
+        private void TrySeedFakeData()
+        {
+            if (_context.Classes.Any())
+                return;
 
-        // Created by me - Returns the list for display in the Razor page
-        public List<ClassInformationModel> DisplayList => ClassList;
-    }
+            var rand = new Random();
+            for (int i = 1; i <= 100; i++)
+            {
+                _context.Classes.Add(new Class
+                {
+                    Name = $"Class {i}",
+                    PersonCount = rand.Next(10, 100),
+                    Description = $"This is a description for Class {i}.",
+                    IsActive = true
+                });
+            }
+            _context.SaveChanges();
+        }
+    }   
 }

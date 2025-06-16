@@ -7,9 +7,12 @@ using LabProject.Helpers; // Assuming this is where the Utils class is located
 using System.Text;
 using LabProject.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace LabProject.Pages
-{
+{   
+    [Authorize]
     public class IndexModel : PageModel
     {
         [BindProperty]
@@ -273,7 +276,7 @@ namespace LabProject.Pages
             if (exportType == "all")
             {
                 var allEntities = await _context.Classes
-                .Where(c => c.IsActive) 
+                .Where(c => c.IsActive)
                 .ToListAsync();
 
 

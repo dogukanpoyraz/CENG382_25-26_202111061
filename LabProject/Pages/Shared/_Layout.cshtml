@@ -20,30 +20,14 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>*@
                     </ul>
-                </div>
 
-                @* Created by me - User info and logout button *@
-                @if (Context.Session.GetString("username") != null)
-                {
-                    <div class="d-flex align-items-center me-3">
-                        <span class="me-3 fw-bold text-primary">
-                            Welcome, @Context.Session.GetString("username")
-                        </span>
-                        <a class="btn btn-outline-danger btn-sm" asp-page="/Logout">
-                            <i class="bi bi-box-arrow-right"></i> Logout
-                        </a>
-                    </div>
-                }
+                    <partial name="_LoginPartial" />
+                </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -52,7 +36,6 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            @*&copy; 2025 - LabProject - <a asp-area="" asp-page="/Privacy">Privacy</a>*@
         </div>
     </footer>
 
